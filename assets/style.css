@@ -127,7 +127,7 @@ button{
 
 .row.dev {
     background-color: aliceblue;
-    /* display: none; */
+    display: none;
 }
 #NextCard {
     display: none;
