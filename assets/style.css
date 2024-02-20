@@ -1,0 +1,134 @@
+body {
+    background-color: #212626;
+}
+
+nav form {
+    margin-left: 20vw;
+    width: 40vw;
+}
+
+h5 {
+    display: inline;
+}
+
+.text-white {
+    color: white;
+}
+
+.v-center {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.large-icons {
+    font-size: xx-large !important;
+}
+
+.player-seek {
+    margin-top: 30px;
+}
+
+/* .player-ctrl > {
+
+} */
+
+.material-icons {
+    cursor: pointer;
+}
+
+.brand-logo {
+    margin-left: 1em;
+}
+
+.horizontal {
+    height: 120px;
+    
+}
+
+.horizontal > .card-image > img {
+    height: 120px;
+}
+
+.card-stacked > .card-content {
+    padding: 1em;
+}
+
+
+#nav-bottom {
+    bottom: 0 !important;
+    position: fixed;
+    opacity: 0.75;
+}
+
+#nav-metadata {
+    margin-top: 12px;
+    line-height: 20px;
+}
+
+#bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -100;
+    width: 100vw;
+    height: 100vh;
+    filter: blur(32px);
+    opacity: 0.75;
+}
+
+button:hover {
+    background-color:rgb(20, 203, 216);
+    transition: 0.3s;
+}
+
+button{
+    background-color:rgb(221, 241, 38);
+}
+
+.arrow{
+    /* text-size-adjust; */
+    color: white;
+    font-size: large;
+}
+
+.rem{
+    color: #ba0000;
+    text-shadow: rgba(175, 0, 0, 0.5);
+}
+
+.rem:hover{
+    color: #ff0000;
+    text-shadow: rgba(175, 0, 0, 0.9);
+    cursor: pointer;
+}
+
+.sname{
+    color: rgb(251, 255, 3);
+}
+
+#vbar {
+    position: fixed;
+    border: #090a0a solid;
+    border-radius: 10px;
+    display: none;
+    bottom: 10%;
+    background-color: #090a0a;
+    opacity: 0.75;
+}
+
+.navimg {
+    background-size: contain;
+}
+
+.row.dev {
+    background-color: aliceblue;
+    /* display: none; */
+}
+#NextCard {
+    display: none;
+}

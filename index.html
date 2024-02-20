@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <title>ngMusicPlayer</title>
+
+    <!-- Styling -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
+</head>
+
+<body ng-controller="appCtrl">
+
+    <!-- Initalize SoundManager -->
+    <sound-manager></sound-manager>
+
+    <!-- Background -->
+    <img id="bg" ng-src="{{currentPlaying.albumart}}" />
+
+    <!-- Navbar (Top) -->
+    <div class="navbar-fixed">
+        <nav id="nav-top">
+            <div class="nav-wrapper black">
+                <a href="#!" class="brand-logo"><i class="material-icons">library_music</i>Logo</a>
+                <form id="search-bar">
+                    <div class="input-field">
+                        <input id="search" type="search" ng-model="search" required>
+                        <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+                        <i class="material-icons">close</i>
+                    </div>
+                </form>
+                <div></div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Music Player (Bottom) -->
+    <div class="navbar-fixed" id="nav-bottom" >
+        <nav id="music-player">
+            <div class="nav-wrapper black row">
+                <img id="navimg" class="col s1" ng-src="{{ currentPlaying.albumart }}" />
+                <div class="col s2" id="nav-metadata">
+                    {{ currentPlaying.title }} <br/> {{ currentPlaying.artist }}
+                </div>
+                <div class="col s5">
+                    <div class="progress player-seek grey darken-2" seek-track>
+                        <div class="determinate white" ng-style="{width : ( progress + '%' ) }"></div>
+                    </div>
+                </div>
+                <div class="col s2 player-ctrl row">
+                    <i id="prev" class="material-icons col" prev-track>skip_previous</i>
+                    <i id='a' ng-show="!isPlaying" class="material-icons col large-icons" play-music>play_arrow</i>
+                    <i id='b' ng-show="isPlaying" class="material-icons col large-icons" pause-music>pause</i>
+                    <i id="next" class="material-icons col" next-track>skip_next</i>
+                </div>
+                <div class="col s2 player-ctrl row">
+                    <i class="material-icons col" repeat-music>repeat</i>
+                    <i id="vu" ng-show="!mute" class="material-icons col" mute-music>volume_up</i>
+                    <i id="vo" ng-show="mute" class="material-icons col" mute-music>volume_off</i>
+                    <i id="c" class="material-icons col" music-volume data-type="increase">add</i>
+                    <i id="d" class="material-icons col" music-volume data-type="decrease">remove</i>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Song Cards -->
+    <div class="container row">
+        <div class="col s7 offset-s1">
+            <div class="card horizontal" ng-mouseover="songHover = true" ng-mouseleave="songHover = false" ng-repeat="song in songs | filter: search">
+                <div class="card-image">
+                    <img src="{{ song.albumart }}">
+                </div>
+                <div class="card-stacked black text-white">
+                    <div class="card-content">
+                        <h5>{{ song.title }}</h5><br/>
+                        <i>
+                            {{ song.artist }}<br/>{{ song.album }}<br/>
+                        </i>
+                        <div class="right" ng-show="songHover">
+                            <i class="material-icons" music-player add-song="song">playlist_add</i>
+                            <i class="material-icons" music-player="play" add-song="song">play_arrow</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s4" style="text-align: center; padding-top: 5%;">
+                <h5 style="color: rgb(37, 253, 206);font-family: Nabla, system-ui;">Playlist</h5>
+            <ul>
+                <li ng-repeat="song in playlist">
+                    <a class="sname" play-from-playlist="song">{{ song.title }}</a> -
+                    <a class="rem" remove-from-playlist="song" data-index="{{$index}}">
+                        <i>(remove)</i>
+                    </a>
+                    <span class="arrow" ng-if="currentPlaying.id == song.id">    &#8592;</span>
+                </li>
+            </ul>
+                <div class="padd">
+                <button id="pall" play-all="songs">Play all</button>
+                <button id="addall" play-all="songs" data-play="false">Add all</button>
+                <button clear-playlist>Clear Playlist</button>
+                <button prev-track>Prev Track</button> -
+            <button next-track>Next Track</button> -
+        </div>
+        </div>
+        <br/>
+    </div>
+
+    <!-- <div id="pNext" class="row" >
+        <div class="col s4 offset-s8">
+            <div class="row">
+                <div class="col s6">
+                    <img style="width: 105%;bottom: 0;" ng-src="{{playlist[(playlist.indexOf(currentPlaying)+1)%playlist.length].albumart}}">
+                </div>
+                <div class="col s6">
+                    <p class="cap">Playing Next:</p>
+                    <h5 class="cap">{{playlist[(playlist.indexOf(currentPlaying)+1)%playlist.length].title}}</h4>
+                    <h6 class="cap">{{playlist[(playlist.indexOf(currentPlaying)+1)%playlist.length].artist}}</h5>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    
+    <!-- Play Next Card -->
+    <div id="NextCard">
+        <div class="row" ng-if="(playlist.indexOf(currentPlaying) != playlist.length-1) || ( repeat && isPlaying )">
+            <div class="col s4 offset-s7">
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img ng-src="{{playlist[(playlist.indexOf(currentPlaying)+1)%playlist.length].albumart}}">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content teal">
+                            <p>Playing Next:</p>
+                            <h5>{{playlist[(playlist.indexOf(currentPlaying)+1)%playlist.length].title}}</h4>
+                            <h6>{{playlist[(playlist.indexOf(currentPlaying)+1)%playlist.length].artist}}</h5>
+                            <a ng-click="pNext()" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">play_arrow</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Volume Bar -->
+    <div class="row">
+        <div id="vbar" class="col s2 offset-s10">
+            <!-- Determinate VolumeBar -->
+            <!-- <div class="progress player-seek grey darken-2" volume-bar>
+                <div class="determinate white" ng-style="{width : ( volume + '%' ) }"></div>
+            </div> -->
+            <!-- Range VolumeBar -->
+            <p class="text-white">Volume: {{ volume.toString().split('.')[0] }}</p>
+            <p class="range-field">
+                <input name="range" type="range" min="0" max="100" ng-model="value" volume-bar>
+            </p>
+        </div>    
+    </div>
+
+    <div class="row dev" style="text-align: center;">
+        <div class="col-md-12">
+            <p>
+                Currently Playing: {{ currentPlaying.title }} by {{ currentPlaying.artist }} ({{ currentPostion }} / {{ currentDuration }})
+            </p>
+            <div class="col dev">
+                <div class="seekBase progress" seek-track>
+                    <div class="seekLoad progress-bar" ng-style="{width : ( progress + '%' ) }"></div>
+                </div>
+            </div><br />
+            <button play-music>Play</button> -
+            <button pause-music>Pause</button> -
+            <button stop-music>Stop</button> -
+            <button repeat-music>Repeat ({{ repeat }})</button> -
+            <button play-pause-toggle data-play="Play!" data-pause="Pause!">Play Toggle</button> Is Playing: {{ isPlaying }}<br/>
+            <br/>Volume: {{ volume }} - <button mute-music>Mute ({{ mute }})</button>
+            <br/><br/><br/><br/>
+        </div>
+    </div>
+
+        <!-- Scripts -->
+        <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+        <script src="dist/angular-soundmanager2.min.js"></script>
+        <script src="assets/app.js"></script>
+</body>
+
+</html>
