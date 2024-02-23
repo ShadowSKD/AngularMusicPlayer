@@ -2,7 +2,7 @@
 <html ng-app="app">
 
 <head>
-    <title>ngMusicPlayer</title>
+    <title>ngJSMusicPlayer</title>
 
     <!-- Styling -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital@0;1&display=swap" rel="stylesheet">
+
 </head>
 
 <body ng-controller="appCtrl">
@@ -25,7 +29,10 @@
     <div class="navbar-fixed">
         <nav id="nav-top">
             <div class="nav-wrapper black">
-                <a href="#!" class="brand-logo"><i class="material-icons">library_music</i>Logo</a>
+                <a href="#!" class="brand-logo"><i class="material-icons">library_music</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a ng-click="about = !about">About</a></li>
+                </ul>
                 <form id="search-bar">
                     <div class="input-field">
                         <input id="search" type="search" ng-model="search" required>
@@ -33,7 +40,6 @@
                         <i class="material-icons">close</i>
                     </div>
                 </form>
-                <div></div>
             </div>
         </nav>
     </div>
@@ -42,7 +48,8 @@
     <div class="navbar-fixed" id="nav-bottom" >
         <nav id="music-player">
             <div class="nav-wrapper black row">
-                <img id="navimg" class="col s1" ng-src="{{ currentPlaying.albumart }}" />
+                <img ng-if="currentPlaying.title" id="navimg" class="col s1" ng-src="{{ currentPlaying.albumart }}" />
+                <div class="col s1" ng-if="!currentPlaying.title"></div>
                 <div class="col s2" id="nav-metadata">
                     {{ currentPlaying.title }} <br/> {{ currentPlaying.artist }}
                 </div>
@@ -58,7 +65,8 @@
                     <i id="next" class="material-icons col" next-track>skip_next</i>
                 </div>
                 <div class="col s2 player-ctrl row">
-                    <i class="material-icons col" repeat-music>repeat</i>
+                    <i class="material-icons col" ng-show="!repeat" repeat-music>repeat</i>
+                    <i class="material-icons col" ng-show="repeat" repeat-music>repeat_on</i>
                     <i id="vu" ng-show="!mute" class="material-icons col" mute-music>volume_up</i>
                     <i id="vo" ng-show="mute" class="material-icons col" mute-music>volume_off</i>
                     <i id="c" class="material-icons col" music-volume data-type="increase">add</i>
@@ -68,9 +76,71 @@
         </nav>
     </div>
 
+    <!-- About -->
+    <div ng-show="about" id="aboutPage" class="row customColor fredoka-text">
+        <div class="col s8 offset-s2 text-white">
+            <h4>ngJSMusicPlayer - AngularJS Project</h4><br>
+            <span class="material-symbols-outlined xlarge-icons">group</span>.. <h5>Group Members:</h5><br><br>
+        </div>
+        <div class="col s6 offset-s2">
+            <ul class="collection customBorder">
+                <li class="collection-item avatar">
+                    <i class="material-icons large-icons green circle">account_circle</i>
+                    <span class="title">Suraj Kr Das</span>
+                    <p>USN: 2KE21CS113
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                <br>
+                <li class="collection-item avatar">
+                    <i class="material-icons large-icons green circle">account_circle</i>
+                    <span class="title">Srinidhi Chappar</span>
+                    <p>USN: 2KE21CS109
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                <br>
+                <li class="collection-item avatar">
+                    <i class="material-icons large-icons green circle">account_circle</i>
+                    <span class="title">Shripad Kulkarni</span>
+                    <p>USN: 2KE21CS102
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+                <br>
+                <li class="collection-item avatar">
+                    <i class="material-icons large-icons green circle">account_circle</i>
+                    <span class="title">Shrinivas Masti</span>
+                    <p>USN: 2KE21CS100
+                    </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+                </li>
+            </ul>
+            <br>
+            <br>
+            <br>
+            <br><br>
+        </div>
+        <div class="col s3 collection customBorder">
+            <div class="collection-item text-grey">
+                <span class="title"><h5>About</h5></span>
+                <p>ngJSMusicPlayer uses angularJS, materialize (CSS and JS utilizing jQuery), angular-soundmanger2 (uses Scott Schiller's SoundManager2), google fonts and icons to give superior experience for the application.</p>
+                <p>The angular-soundManager2 JS file is optimized to better functionality and multiple functionalities is introduced in local script.</p>
+                <br><h6>Guided by: Prof. Vinoda D B</h6>    
+            </div>
+        </div>
+    </div>
+
     <!-- Song Cards -->
-    <div class="container row">
-        <div class="col s7 offset-s1">
+    <div ng-show="!about" id="scard" class="container row rubik-text">
+        <div class="col s9">
+            <ul class="tabs darken-1 customColor">
+                <li class="tab col s6"><a class="active" href="#AllSongs">All Songs</a></li>
+                <li class="tab col s4 offset-s2 disabled" ng-if="!(playlist.length>2)" ng-click="pRecomm()"><a href="#Recommended">Recommended</a></li>
+                <li class="tab col s4 offset-s2" ng-if="playlist.length>2"><a href="#Recommended" ng-click="pRecomm()">Recommended</a></li>
+            </ul>
+        </div>
+        <div id='AllSongs' class="col s9">
             <div class="card horizontal" ng-mouseover="songHover = true" ng-mouseleave="songHover = false" ng-repeat="song in songs | filter: search">
                 <div class="card-image">
                     <img src="{{ song.albumart }}">
@@ -78,56 +148,87 @@
                 <div class="card-stacked black text-white">
                     <div class="card-content">
                         <h5>{{ song.title }}</h5><br/>
+                        <span class="material-symbols-outlined">artist</span> 
                         <i>
-                            {{ song.artist }}<br/>{{ song.album }}<br/>
+                            {{ " "+song.artist }}<br>
+                            <span class="material-symbols-outlined">album</span>{{ ' '+song.album }}<br/>
                         </i>
                         <div class="right" ng-show="songHover">
-                            <i class="material-icons" music-player add-song="song">playlist_add</i>
+                            <i class="material-icons" music-player add-song="song">add_circle</i>
+                            <i class="material-icons" music-player="play" add-song="song">play_arrow</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div id='Recommended' class="col s9">
+            <div class="card black text-white fredoka-text" style="opacity: 0.85;"><div class="card-content"><span class="card-title">Recommended Songs:</span></div></div>
+            <div class="card horizontal" ng-mouseover="songHover = true" ng-mouseleave="songHover = false" ng-repeat="song in songs | filter: gen">
+                <div class="card-image">
+                    <img src="{{ song.albumart }}">
+                </div>
+                <div class="card-stacked black text-white">
+                    <div class="card-content">
+                        <h5>{{ song.title }}</h5><br/>
+                        <p>
+                            <span class="material-symbols-outlined">artist</span> 
+                            <i>
+                                {{ " "+song.artist }}<br>
+                                <span class="material-symbols-outlined">album</span>{{ ' '+song.album }}<br>
+                            </i>
+                        </p>
+                        <div class="right" ng-show="songHover">
+                            <i class="material-icons" music-player add-song="song">add_circle</i>
                             <i class="material-icons" music-player="play" add-song="song">play_arrow</i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col s4" style="text-align: center; padding-top: 5%;">
-                <h5 style="color: rgb(37, 253, 206);font-family: Nabla, system-ui;">Playlist</h5>
-            <ul>
-                <li ng-repeat="song in playlist">
-                    <a class="sname" play-from-playlist="song">{{ song.title }}</a> -
-                    <a class="rem" remove-from-playlist="song" data-index="{{$index}}">
-                        <i>(remove)</i>
-                    </a>
-                    <span class="arrow" ng-if="currentPlaying.id == song.id">    &#8592;</span>
-                </li>
-            </ul>
-                <div class="padd">
-                <button id="pall" play-all="songs">Play all</button>
-                <button id="addall" play-all="songs" data-play="false">Add all</button>
-                <button clear-playlist>Clear Playlist</button>
-                <button prev-track>Prev Track</button> -
-            <button next-track>Next Track</button> -
-        </div>
+        <!-- Playlist -->
+        <div class="col s3 rubik-text" style="padding-top: 5%;">
+            <div class="row" style="padding-top: 5%;">
+                <div class="col s15">
+                    <div>
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title"><h5 style="color: rgb(37, 253, 206);font-family: Nabla, system-ui;">Playlist</h5></span>
+                                <ul>
+                                    <li ng-repeat="song in playlist">
+                                        <a class="sname" play-from-playlist="song" >{{ song.title }}</a>
+                                        <a class="rem" remove-from-playlist="song" data-index="{{$index}}">
+                                            <i class="material-icons" style="bottom: 0;">close</i>
+                                        </a>
+                                        <span class="arrow" ng-if="currentPlaying.id == song.id">    &#8592;</span>
+                                    </li>
+                                </ul>
+                                <div class="padd">
+                                    <i id="pall" play-all="songs" class="material-icons large-icons" ng-mouseover="ipa = true" ng-mouseleave="ipa = false">playlist_play</i>
+                                    <i id="addall" play-all="songs" data-play="false" class="material-icons large-icons" ng-mouseover="iaa = true" ng-mouseleave="iaa = false">playlist_add</i>
+                                    <i clear-playlist class="material-icons large-icons" ng-mouseover="icp = true" ng-mouseleave="icp = false">playlist_remove</i>
+                                    <i prev-track class="material-icons large-icons" ng-mouseover="ipt = true" ng-mouseleave="ipt = false">skip_previous</i>
+                                    <i next-track class="material-icons large-icons" ng-mouseover="inxt = true" ng-mouseleave="inxt = false">skip_next</i>
+                                    <i class="material-icons medium-icons" ng-click="sharePlaylist()" ng-mouseover="ish = true" ng-mouseleave="ish = false">share</i><br>
+                                    <span ng-show="!ipa&&!iaa&&!icp&&!ipt&&!inxt&&!ish"><br></span>
+                                    <span ng-show="ipa">Play All</span>
+                                    <span ng-show="iaa">Add All</span>
+                                    <span ng-show="icp">Clear Playlist</span>
+                                    <span ng-show="ipt">Play Previous</span>
+                                    <span ng-show="inxt">Play Next</span>
+                                    <span ng-show="ish">Share Playlist</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <br/>
     </div>
 
-    <!-- <div id="pNext" class="row" >
-        <div class="col s4 offset-s8">
-            <div class="row">
-                <div class="col s6">
-                    <img style="width: 105%;bottom: 0;" ng-src="{{playlist[(playlist.indexOf(currentPlaying)+1)%playlist.length].albumart}}">
-                </div>
-                <div class="col s6">
-                    <p class="cap">Playing Next:</p>
-                    <h5 class="cap">{{playlist[(playlist.indexOf(currentPlaying)+1)%playlist.length].title}}</h4>
-                    <h6 class="cap">{{playlist[(playlist.indexOf(currentPlaying)+1)%playlist.length].artist}}</h5>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    
     <!-- Play Next Card -->
-    <div id="NextCard">
+    <div class="NextCard rubik-text">
         <div class="row" ng-if="(playlist.indexOf(currentPlaying) != playlist.length-1) || ( repeat && isPlaying )">
             <div class="col s4 offset-s7">
                 <div class="card horizontal">
@@ -160,6 +261,12 @@
                 <input name="range" type="range" min="0" max="100" ng-model="value" volume-bar>
             </p>
         </div>    
+        <div id="in-de-vbar" class="col s2 offset-s9 black">
+            <span class="fredoka-text text-white" style="left: 25%;top: 25%;position: relative;">Volume</span>
+            <span id="volTen" class="material-symbols-outlined xlarge-icons text-white">timer_10</span>
+            <span ng-show="incr" class="material-icons text-white" id="cr">add</span>
+            <span ng-show="decr" class="material-icons text-white" id="cr">remove</span>
+        </div>
     </div>
 
     <div class="row dev" style="text-align: center;">
@@ -182,12 +289,13 @@
         </div>
     </div>
 
-        <!-- Scripts -->
-        <!-- <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-        <script src="dist/angular-soundmanager2.min.js"></script>
-        <script src="assets/app.js"></script>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <script src="dist/angular-soundmanager2.min.js"></script>
+    <script src="assets/app.js"></script>
+    
 </body>
 
 </html>

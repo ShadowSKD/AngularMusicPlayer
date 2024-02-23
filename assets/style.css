@@ -15,6 +15,18 @@ h5 {
     color: white;
 }
 
+.text-grey {
+    color: rgba(69, 69, 69, 0.69);
+}
+
+.customBorder {
+    border: none;
+}
+
+.collection-item {
+    border-radius: 10px;
+}
+
 .v-center {
     display: inline-block;
     vertical-align: middle;
@@ -23,6 +35,11 @@ h5 {
 
 .large-icons {
     font-size: xx-large !important;
+}
+
+.xlarge-icons {
+    font-size: xx-large !important;
+    transform: scale(1.5);
 }
 
 .player-seek {
@@ -42,18 +59,21 @@ h5 {
 }
 
 .horizontal {
-    height: 120px;
-    
+    height: 130px;
+    opacity: 0.85;
 }
 
 .horizontal > .card-image > img {
-    height: 120px;
+    height: 130px;
 }
 
 .card-stacked > .card-content {
-    padding: 1em;
+    padding: 0.5em;
 }
 
+.customColor {
+    background: linear-gradient(135deg, rgba(101, 41, 151, 0.9),rgba(73, 57, 153, 0.5));
+}
 
 #nav-bottom {
     bottom: 0 !important;
@@ -79,15 +99,6 @@ h5 {
     height: 100vh;
     filter: blur(32px);
     opacity: 0.75;
-}
-
-button:hover {
-    background-color:rgb(20, 203, 216);
-    transition: 0.3s;
-}
-
-button{
-    background-color:rgb(221, 241, 38);
 }
 
 .arrow{
@@ -121,6 +132,17 @@ button{
     opacity: 0.75;
 }
 
+#in-de-vbar {
+    position: fixed;
+    bottom: 10%;
+    height: 50px;
+    border: #090a0a solid;
+    border-radius: 10px;
+    display: none;
+    background-color: #090a0a;
+    opacity: 0.75;
+}
+
 .navimg {
     background-size: contain;
 }
@@ -129,6 +151,43 @@ button{
     background-color: aliceblue;
     display: none;
 }
-#NextCard {
+.NextCard {
     display: none;
+    position: fixed;
+    border-radius: 10px;
+    display: none;
+    bottom: 20%;
+    right: 0;
+    opacity: 0.75;
+}
+#scard {
+    top: 20%;
+}
+
+.fredoka-text {
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "wdth" 100;
+}
+#volTen {
+    bottom: 11%;
+    right: 13.5%;
+    position: fixed;
+}
+.material-icons#cr {
+    bottom: 11.5%;
+    right: 12%;
+    position: fixed;
+}
+.card-content.white-text {
+    width: 400px;
+}
+
+.rubik-text {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; 
 }
