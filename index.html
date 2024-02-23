@@ -196,7 +196,8 @@
                                 <span class="card-title"><h5 style="color: rgb(37, 253, 206);font-family: Nabla, system-ui;">Playlist</h5></span>
                                 <ul>
                                     <li ng-repeat="song in playlist">
-                                        <a class="sname" play-from-playlist="song" >{{ song.title }}</a>
+                                        <a class="sname" play-from-playlist="song" ng-if="currentPlaying.id != song.id">{{ song.title }}</a>
+                                        <a class="sname active" play-from-playlist="song" ng-if="currentPlaying.id == song.id">{{ song.title }}</a>
                                         <a class="rem" remove-from-playlist="song" data-index="{{$index}}">
                                             <i class="material-icons" style="bottom: 0;">close</i>
                                         </a>
@@ -228,7 +229,7 @@
     </div>
 
     <!-- Play Next Card -->
-    <div class="NextCard rubik-text">
+    <div id="NextCard" class="NextCard rubik-text">
         <div class="row" ng-if="(playlist.indexOf(currentPlaying) != playlist.length-1) || ( repeat && isPlaying )">
             <div class="col s4 offset-s7">
                 <div class="card horizontal">

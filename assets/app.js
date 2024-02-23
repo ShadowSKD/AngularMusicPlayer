@@ -167,7 +167,6 @@ app.controller('appCtrl', function ($scope, angularPlayer) {
             }
         })
         $scope.gen=high.name
-        console.log($scope.gen)
         return $scope.gen
     }
 
@@ -195,10 +194,12 @@ app.controller('appCtrl', function ($scope, angularPlayer) {
         }
         var checkIfTrackIsEndingSoon = () => {
             var timeLeft = getDuration($scope.currentDuration) - getDuration($scope.currentPostion)
-            if(timeLeft < 10 && timeLeft > 0 && document.getElementById("NextCard").style.display != 'block') {
-                // console.log("The song is about to end in 5 seconds.")
-                document.getElementById("NextCard").style.display = 'block'
-                setTimeout(()=>document.getElementById("NextCard").style.display = 'none',4550)
+            if(timeLeft < 10 && timeLeft > 0) {
+                if(document.getElementById("NextCard"))
+                    if(document.getElementById("NextCard").style.display != 'block'){
+                        document.getElementById("NextCard").style.display = 'block'
+                        setTimeout(()=>document.getElementById("NextCard").style.display = 'none',4550)
+                    }
             }
         }
         checkIfTrackIsEndingSoon()
