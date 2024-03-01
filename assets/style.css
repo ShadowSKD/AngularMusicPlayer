@@ -172,6 +172,7 @@ h5 {
 }
 #scard {
     top: 20%;
+    padding-bottom: 5%;
 }
 
 .fredoka-text {
@@ -200,4 +201,20 @@ h5 {
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400; 
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    -ms-overflow-style: none;
+}
+
+html {
+    scrollbar-width: none;
+}
+
+.aboutPage {
+    padding-top: 10%;
 }
