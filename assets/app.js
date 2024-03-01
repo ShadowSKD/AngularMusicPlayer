@@ -6,111 +6,174 @@ app.controller('appCtrl', function ($scope, angularPlayer) {
         {
             id: "1",
             mood: "happy",
-            title: "Take My Breath Away",
-            artist: "Alesso",
-            url: "src/mp3/1.mp3",
-            albumart: "src/img/1.png",
-            album: "Singles"
+            title: "Suzume feat. Toaka",
+            artist: "RADWIMPS",
+            url: "src/mp3/19.mp3",
+            albumart: "src/img/19.jpg",
+            album: "Suzume no Tonjari"
         },
         {
             id: "2",
             mood: "happy",
-            title: "Sleepwalker",
-            artist: "Illenium",
+            title: "Idol",
+            artist: "YAOSOBI",
             url: "src/mp3/2.mp3",
-            albumart: "src/img/2.png",
-            album: "Ashes"
+            albumart: "src/img/2.jpg",
+            album: "Oshi no Ko"
         },
         {
             id: "3",
-            mood: "happy",
-            title: "Sweet Child O' Mine",
-            artist: "Guns N' Roses",
+            mood: "sad",
+            title: "Mephisto",
+            artist: "Ziyoou-vachi",
             url: "src/mp3/3.mp3",
-            albumart: "src/img/3.png",
-            album: "Singles"
+            albumart: "src/img/3.jpg",
+            album: "Oshi no Ko"
         },
         {
             id: "4",
             mood: "happy",
-            title: "Take My Breath Away",
-            artist: "Alesso",
-            url: "src/mp3/1.mp3",
-            albumart: "src/img/1.png",
-            album: "Singles"
+            title: "BUSSIN'",
+            artist: "Twisted",
+            url: "src/mp3/4.mp3",
+            albumart: "src/img/4.jpg",
+            album: "NCS"
         },
         {
             id: "5",
             mood: "happy",
-            title: "Sleepwalker",
-            artist: "Illenium",
-            url: "src/mp3/2.mp3",
-            albumart: "src/img/2.png",
-            album: "Ashes"
+            title: "Lies",
+            artist: "Diamond Eyes",
+            url: "src/mp3/5.mp3",
+            albumart: "src/img/5.jpg",
+            album: "NCS"
         },
         {
             id: "6",
-            mood: "sad",
-            title: "Sweet Child O' Mine",
-            artist: "Guns N' Roses",
-            url: "src/mp3/3.mp3",
-            albumart: "src/img/3.png",
-            album: "Singles"
+            mood: "instrument",
+            title: "I Like It",
+            artist: "Defx x P for Parker x Fame Sounds",
+            url: "src/mp3/6.mp3",
+            albumart: "src/img/6.jpg",
+            album: "NCS"
         },
         {
             id: "7",
-            mood: "sad",
-            title: "Take My Breath Away",
-            artist: "Alesso",
-            url: "src/mp3/1.mp3",
-            albumart: "src/img/1.png",
-            album: "Singles"
+            mood: "instrument",
+            title: "Reason",
+            artist: "MANIA",
+            url: "src/mp3/7.mp3",
+            albumart: "src/img/7.jpg",
+            album: "NCS"
         },
         {
             id: "8",
-            mood: "happy",
-            title: "Sleepwalker",
-            artist: "Illenium",
-            url: "src/mp3/2.mp3",
-            albumart: "src/img/2.png",
-            album: "Ashes"
+            mood: "instrument",
+            title: "Calling Out Your Name (ft. Lottie Jones)",
+            artist: "MANIA & Tom Wigley",
+            url: "src/mp3/8.mp3",
+            albumart: "src/img/8.jpg",
+            album: "NCS"
         },
         {
             id: "9",
-            mood: "sad",
-            title: "Sweet Child O' Mine",
-            artist: "Guns N' Roses",
-            url: "src/mp3/3.mp3",
-            albumart: "src/img/3.png",
-            album: "Singles"
+            mood: "happy",
+            title: "Throne",
+            artist: "Tomatow & SagaB & Adam Putra",
+            url: "src/mp3/9.mp3",
+            albumart: "src/img/9.jpg",
+            album: "NCS"
         },
         {
             id: "10",
-            mood: "happy",
-            title: "Take My Breath Away",
-            artist: "Alesso",
-            url: "src/mp3/1.mp3",
-            albumart: "src/img/1.png",
-            album: "Singles"
+            mood: "instrument",
+            title: "Memory Box",
+            artist: "ROY KNOX",
+            url: "src/mp3/10.mp3",
+            albumart: "src/img/10.jpg",
+            album: "NCS"
         },
         {
             id: "11",
             mood: "sad",
-            title: "Sleepwalker",
-            artist: "Illenium",
-            url: "src/mp3/2.mp3",
-            albumart: "src/img/2.png",
-            album: "Ashes"
+            title: "Back To You",
+            artist: "Nightcore mania",
+            url: "src/mp3/11.mp3",
+            albumart: "src/img/11.jpg",
+            album: "Nightcore"
         },
         {
             id: "12",
             mood: "happy",
-            title: "Sweet Child O' Mine",
-            artist: "Guns N' Roses",
-            url: "src/mp3/3.mp3",
-            albumart: "src/img/3.png",
-            album: "Singles"
-        }
+            title: "Dandelions",
+            artist: "Ruth B",
+            url: "src/mp3/12.mp3",
+            albumart: "src/img/12.jpg",
+            album: "Nightcore"
+        },
+        {
+            id: "13",
+            mood: "instrument",
+            title: "Move Into Light",
+            artist: "NightStep",
+            url: "src/mp3/13.mp3",
+            albumart: "src/img/13.jpg",
+            album: "Nightcore"
+        },
+        {
+            id: "14",
+            mood: "happy",
+            title: "Don't you Worry Child",
+            artist: "Beth B",
+            url: "src/mp3/14.mp3",
+            albumart: "src/img/14.jpg",
+            album: "Nightcore"
+        },
+        {
+            id: "15",
+            mood: "sad",
+            title: "Dynasty",
+            artist: "Miia",
+            url: "src/mp3/15.mp3",
+            albumart: "src/img/15.jpg",
+            album: "Nightcore"
+        },
+        {
+            id: "16",
+            mood: "happy",
+            title: "The Girl [Different Heaven Remix]",
+            artist: "HellBerg ft. Cozi Zuehlsdorff",
+            url: "src/mp3/16.mp3",
+            albumart: "src/img/16.jpg",
+            album: "Nightcore"
+        },
+        {
+            id: "17",
+            mood: "happy",
+            title: "Royalty",
+            artist: "Ezgod, Maestro Chives, Neoni",
+            url: "src/mp3/17.mp3",
+            albumart: "src/img/17.jpg",
+            album: "Nightcore"
+        },
+        {
+            id: "18",
+            mood: "sad",
+            title: "Sorry",
+            artist: "NightStep",
+            url: "src/mp3/18.mp3",
+            albumart: "src/img/18.jpg",
+            album: "Nightcore"
+        },
+        {
+            id: "19",
+            mood: "happy",
+            title: "Shatter Me",
+            artist: "NightStep",
+            url: "src/mp3/1.mp3",
+            albumart: "src/img/1.jpg",
+            album: "NightCore"
+        }  
     ]
 
     // Init variables
@@ -133,6 +196,12 @@ app.controller('appCtrl', function ($scope, angularPlayer) {
     $scope.currentPlaying = {albumart:bgImage}
     
     // Init Functions
+    $scope.showAbout = () => {
+        $scope.about = !$scope.about
+        if($scope.about) document.body.style.overflow = "hidden"
+        else document.body.style.overflow = "auto"
+    }
+
     $scope.songs.forEach(song=>{
         checkImageExists(song.albumart,(e)=>{
             if(!e) song.albumart=bgImage
@@ -208,14 +277,12 @@ app.controller('appCtrl', function ($scope, angularPlayer) {
     function downloadText() {
         let text = 'Playlist:\n'
         let i=1
-        // Get the text from the textarea
         $scope.playlist.forEach(song=> {
             text += `${i}.Song Title: ${song.title}, Song Artist: ${song.artist}, Song Album: ${song.album}, Song Mood: ${song.mood}\n`
             i+=1
         })
-        // Create a data URL
+        console.log(encodeURIComponent(text))
         var dataUrl = 'data:text/plain;charset=utf-8,' + encodeURIComponent(text)
-        // Create a new anchor element
         var downloadAnchorNode = document.createElement('a')
         downloadAnchorNode.setAttribute("href",dataUrl)
         downloadAnchorNode.setAttribute("download", "Playlist.txt")
@@ -263,7 +330,7 @@ app.controller('appCtrl', function ($scope, angularPlayer) {
     document.addEventListener('keypress',keypress)
     document.onkeydown = (e) =>{
         if(e.keyCode == 38) {
-            
+            document.body.style.overflow = "hidden"
             document.getElementById('in-de-vbar').style.display='block'
             $scope.incr = true
             document.getElementById("c").click()
@@ -272,7 +339,7 @@ app.controller('appCtrl', function ($scope, angularPlayer) {
                 $scope.incr = false
             },500)
         } else if(e.keyCode == 40) {
-            
+            document.body.style.overflow = "hidden"
             document.getElementById('in-de-vbar').style.display='block'
             $scope.decr = true
             document.getElementById('d').click()
@@ -313,3 +380,9 @@ app.controller('appCtrl', function ($scope, angularPlayer) {
     })
 })
 
+window.addEventListener('keydown', function() {
+    if (event.keyCode == 32) document.body.style.overflow = "hidden"
+})
+window.addEventListener('keyup', function() {
+    if (event.keyCode == 32 || event.keyCode == 40 || event.keyCode == 38) document.body.style.overflow = "auto"
+})
