@@ -31,7 +31,7 @@
             <div class="nav-wrapper black">
                 <a href="#!" class="brand-logo"><i class="material-icons">library_music</i></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a ng-click="about = !about">About</a></li>
+                    <li><a ng-click="showAbout()">About</a></li>
                 </ul>
                 <form id="search-bar">
                     <div class="input-field">
@@ -85,7 +85,7 @@
         <div class="col s6 offset-s2">
             <ul class="collection customBorder">
                 <li class="collection-item avatar">
-                    <i class="material-icons large-icons green circle">account_circle</i>
+                    <img src="src/img/a1.jpg" class="circle">
                     <span class="title">Suraj Kr Das</span>
                     <p>USN: 2KE21CS113
                     </p>
@@ -93,7 +93,8 @@
                 </li>
                 <br>
                 <li class="collection-item avatar">
-                    <i class="material-icons large-icons green circle">account_circle</i>
+                    <!-- <i class="material-icons large-icons green circle">account_circle</i> -->
+                    <img src="src/img/a2.jpg" class="circle">
                     <span class="title">Srinidhi Chappar</span>
                     <p>USN: 2KE21CS109
                     </p>
@@ -101,7 +102,8 @@
                 </li>
                 <br>
                 <li class="collection-item avatar">
-                    <i class="material-icons large-icons green circle">account_circle</i>
+                    <!-- <i class="material-icons large-icons green circle">account_circle</i> -->
+                    <img src="src/img/a3.jpg" class="circle">
                     <span class="title">Shripad Kulkarni</span>
                     <p>USN: 2KE21CS102
                     </p>
@@ -109,7 +111,8 @@
                 </li>
                 <br>
                 <li class="collection-item avatar">
-                    <i class="material-icons large-icons green circle">account_circle</i>
+                    <!-- <i class="material-icons large-icons green circle">account_circle</i> -->
+                    <img src="src/img/a4.jpg" class="circle">
                     <span class="title">Shrinivas Masti</span>
                     <p>USN: 2KE21CS100
                     </p>
@@ -201,6 +204,7 @@
                                         <a class="rem" remove-from-playlist="song" data-index="{{$index}}">
                                             <i class="material-icons" style="bottom: 0;">close</i>
                                         </a>
+                                        &nbsp;
                                         <span class="arrow" ng-if="currentPlaying.id == song.id">    &#8592;</span>
                                     </li>
                                 </ul>
